@@ -4,13 +4,19 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/linoMybos/passport"
+        }
+    ],
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/mongodb": "*",
         "laravel/framework": "^8.75",
-        "laravel/passport": "^10.3",
+        "laravel/passport-mybos": "dev-10.x.mybos",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5"
     },
