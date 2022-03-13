@@ -20,7 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('posts', PostController::class)->only([
-    'destroy', 'show', 'store', 'update'
-]);
 
+Route::post('/register', 'App\Http\Controllers\Auth\UserAuthController@register');
+Route::post('/login', 'App\Http\Controllers\Auth\UserAuthController@login');
+
+Route::middleware('auth:api')->group( function () {
+    Route::resource('posts', PostController::class)->only([
+        'destroy', 'show', 'store', 'update'
+    ]);
+});

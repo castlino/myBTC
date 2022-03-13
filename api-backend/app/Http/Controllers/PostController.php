@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
 
 class PostController extends Controller
 {
     public function show($slug)
     {
-        return view('post', [
-            'post' => Post::where('slug', '=', $slug)->first()
-        ]);
+        $routePrefix = Route::getCurrentRoute()->getPrefix();
+        if ($routePrefix == 'api') {
+            return response()->json(
+                [
+                    "post" => Post::where('slug', '=', $slug)->first()
+                ],
+                201);
+        } else {
+            return view('post', [
+                'post' => Post::where('slug', '=', $slug)->first(),
+                'routePrefix' => $routePrefix
+            ]);
+        }
     }
 
     public function store(Request $request)
