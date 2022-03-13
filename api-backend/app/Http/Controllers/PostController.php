@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 class PostController extends Controller
 {
+    public function all()
+    {
+        return response()->json(Post::all(), 201);
+    }
+
     public function show($slug)
     {
         $routePrefix = Route::getCurrentRoute()->getPrefix();

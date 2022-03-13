@@ -28,4 +28,5 @@ Route::middleware('auth:api')->group( function () {
     Route::resource('posts', PostController::class)->only([
         'destroy', 'show', 'store', 'update'
     ]);
+    Route::get('/posts', 'App\Http\Controllers\PostController@all');
 });
